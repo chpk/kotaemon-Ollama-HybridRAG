@@ -37,12 +37,6 @@ documents and developers who want to build their own RAG pipeline.
 
 ## Installation
 
-### For end users
-
-This document is intended for developers. If you just want to install and use the app as
-it is, please follow the non-technical [User Guide](https://cinnamon.github.io/kotaemon/).
-Use the most recent release `.zip` to include latest features and bug-fixes.
-
 ### For developers
 
 #### System requirements
@@ -54,54 +48,13 @@ Use the most recent release `.zip` to include latest features and bug-fixes.
 
 You will need to install the system dependencies of [unstructured](https://docs.unstructured.io/open-source/installation/full-installation#full-installation). The installations vary by operating system, so please go to the link and follow the instructions there.
 
-#### With Docker (recommended)
-
-We support both `lite` & `full` version of Docker images. With `full`, the extra packages of `unstructured` will be installed as
-well, it can support additional file types (.doc, .docx, ...) but the cost is larger docker image size. For most users, the `lite` image should work well in most cases.
-
-- To use the `lite` version.
-
-```
-docker run \
--e GRADIO_SERVER_NAME=0.0.0.0 \
--e GRADIO_SERVER_PORT=7860 \
--p 7860:7860 -it --rm \
-ghcr.io/cinnamon/kotaemon:main-lite
-```
-
-- To use the `full` version.
-
-```
-docker run \
--e GRADIO_SERVER_NAME=0.0.0.0 \
--e GRADIO_SERVER_PORT=7860 \
--p 7860:7860 -it --rm \
-ghcr.io/cinnamon/kotaemon:main-full
-```
-
-Currently, two platforms: `linux/amd64` and `linux/arm64` (for newer Mac) are provided & tested. User can specify the platform by passing `--platform` in the docker run command. For example:
-
-```
-# To run docker with platform linux/arm64
-docker run \
--e GRADIO_SERVER_NAME=0.0.0.0 \
--e GRADIO_SERVER_PORT=7860 \
--p 7860:7860 -it --rm \
---platform linux/arm64 \
-ghcr.io/cinnamon/kotaemon:main-lite
-```
-
-If everything is set up fine, navigate to `http://localhost:7860/` to access the web UI.
-
-We use [GHCR](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry) to store docker images, all images can be found [here.](https://github.com/Cinnamon/kotaemon/pkgs/container/kotaemon)
-
-#### Without Docker
+#### Without Docker/native installation (recommended)
 
 - Clone and install required packages on a fresh python environment.
 
 ```shell
 # optional (setup env)
-conda create -n kotaemon python=3.10
+conda create -n kotaemon python=3.11
 conda activate kotaemon
 
 # clone this repo

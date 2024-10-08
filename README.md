@@ -37,12 +37,22 @@ documents and developers who want to build their own RAG pipeline.
 
 ## Installation
 
-### For developers
+### For developers (ONLY Local LLMs)
+
+### Ollama OpenAI compatible server (recommended)
+
+Install [ollama](https://github.com/ollama/ollama) and start the application.
+
+Pull your model (e.g):
+
+```
+ollama pull mistral-nemo:12b-instruct-2407-q5_K_M
+ollama pull nomic-embed-text:latest
+```
 
 #### System requirements
 
-1. Python >=3.10
-2. (optional) [Docker](https://www.docker.com/)
+1. Python >=3.11
 
 ##### If you would like to process files other than .pdf, .html, .mhtml, and .xlsx documents
 
@@ -66,7 +76,7 @@ pip install -e "libs/ktem"
 
 ```
 
-- Create a .env file in the root of this project. Use .env.example as a template
+- Refer to the .env and settings.yaml files in the ./extras/ folder of this project. Modify these files accordingly based on your requirements.
 
 The .env file is there to serve use cases where users want to pre-config the models before starting up the app (e.g. deploy the app on HF hub). The file will only be used to populate the db once upon the first run, it will no longer be used in consequent runs.
 
